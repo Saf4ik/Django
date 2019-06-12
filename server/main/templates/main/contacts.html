@@ -1,0 +1,22 @@
+{% extends 'main/master.html' %}
+
+{% block page_title %}
+Contacts page
+{% endblock %}
+
+{% block page_content %}
+    <div class="page__content">
+        <h1 class="page__title">
+            Контакты
+        </h1>
+        <ul class="contacts-list">
+            {% for itm in contacts %}
+            <li>
+                <span>
+                    {{ itm }}
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}        
