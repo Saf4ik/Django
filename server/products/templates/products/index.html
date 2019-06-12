@@ -5,6 +5,7 @@ Catalog page
 {% endblock %}
 
 {% block page_content %}
+<link rel="stylesheet" href="/static/products/css/index.css">
     <div class="page__content">
         <h1 class="page__title">
             Каталог
@@ -12,8 +13,14 @@ Catalog page
         <ul class="product_list">
             {% for itm in products %}
                 <li>
-                    <span>{{ itm.name }}</span>
-                    <a href="{% url 'products:detail' pk=forloop.counter0 %}">Перейти</a>
+                    <span class="product-list_item-name">{{ itm.name }}</span>
+                    {% if itm.description|length < 15 %}
+                    <span class="product-list_item-description">{{ itm.description }}</span>
+                    {% else %}
+                    <span class="product-list_item-description">{{ itm.description|slice:"0:15" }}</span>
+                    {% endif %}
+                    <span class="product-list_item-cost">{{ itm.cost }}</span>
+                    <a href="{% url 'products:detail' pk=itm.id %}">Перейти</a>
                 </li>
             {% endfor %}
         </ul>

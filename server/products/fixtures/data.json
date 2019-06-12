@@ -1,6 +1,27 @@
 [
-    {"name": "Avocado"},
-    {"name": "Banana"},
-    {"name": "Onion"},
-    {"name": "Kivy"}
+    {
+        "name": "Avocado",
+        "description": "This is an avocado",
+        "cost": 100
+    },
+    {
+        "name": "Banana",
+        "description": "This is an Banana",
+        "cost": 200
+    },
+    {
+        "name": "Onion",
+        "description": "This is an Onion",
+        "cost": 300
+    },
+    {
+        "name": "Kiwi",
+        "description": "This is an Kiwi",
+        "cost": 400
+    },
+    {
+        "name": "Ананас",
+        "description": "Это ананас",
+        "cost": 500
+    }
 ]

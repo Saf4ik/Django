@@ -5,7 +5,11 @@ Catalog page
 {% endblock %}
 
 {% block page_content %}
+<link rel="stylesheet" href="/static/products/css/detail.css">
     <div class="page__content">
-        <h1 class="product_title">{{ product.name }}</h1>
+        <h1 class="product__title">{{ product.name }}</h1>
+        <span class="product__description">{{ product.description }}</span>
+        <h4 class="product__cost">{{ product.cost }}</h4>
     </div>
+    {{ some_variable }}
 {% endblock %}
