@@ -1,0 +1,20 @@
+{% extends 'main/master.html' %}
+
+{% block page_title %}
+Create Category
+{% endblock %}
+
+{% block page_content %}
+<div class="page__content">
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-content">
+            <label for="{{ field.name }}">{{ field.label }}</label>
+            {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit">
+    </form>
+</div>
+{% endblock %}
