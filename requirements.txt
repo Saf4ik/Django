@@ -2,3 +2,4 @@ Django
 pylint
 autopep8
 ipython
+Pillow

@@ -10,19 +10,31 @@ Catalog page
         <h1 class="page__title">
             Каталог
         </h1>
-        <ul class="product_list">
-            {% for itm in products %}
-                <li>
-                    <span class="product-list_item-name">{{ itm.name }}</span>
-                    {% if itm.description|length < 15 %}
-                    <span class="product-list_item-description">{{ itm.description }}</span>
-                    {% else %}
-                    <span class="product-list_item-description">{{ itm.description|slice:"0:15" }}</span>
-                    {% endif %}
-                    <span class="product-list_item-cost">{{ itm.cost }}</span>
-                    <a href="{% url 'products:detail' pk=itm.id %}">Перейти</a>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="product-list">
+        {% for itm in products %}
+            <div class="product-list__item">   
+                <span class="product-list__item-name">
+                    {{ itm.name }}
+                </span>
+                {% if itm.description|length < 15 %}
+                <span class="products__item-description">{{ itm.description }}</span>
+                {% else %}
+                <span class="product-list__item-description">{{ itm.description|slice:"0:15" }}</span>
+                {% endif %}
+                {% if cost %}
+                <span class="product-list__item-cost">
+                    {{ cost }}
+                </span>
+                {% else %}
+                <span class="product-list__item-cost products_item-cost_empty">
+                    Значение отсутсвует
+                </span>
+                {% endif %}
+                <a href="{% url 'products:detail' pk=itm.id %}" class="product-list__item-link">
+                    Перейти
+                </a>
+            </div>
+        {% endfor %}
+        </div>
     </div>
 {% endblock %}
