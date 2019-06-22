@@ -1,0 +1,15 @@
+{% extends 'main/master.html' %}
+
+{% block page_title %}
+Delete Product
+{% endblock %}
+
+{% block page_content %}
+<div class="page__content">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <span class="message_warning">Запись {{ object.name }} будет удалена.</span>
+        <input type="submit">
+    </form>
+</div>
+{% endblock %}
