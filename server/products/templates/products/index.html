@@ -11,26 +11,27 @@ Catalog page
             Каталог
         </h1>
         <div class="product-list">
-        {% for itm in products %}
-            <div class="product-list__item">   
+        {% for object in object_list %}
+            <div class="product-list__item">
+                <img src="{{ object.image.url }}" alt="object.image" class="product-list__item-image">
                 <span class="product-list__item-name">
-                    {{ itm.name }}
+                    {{ object.name }}
                 </span>
-                {% if itm.description|length < 15 %}
-                <span class="products__item-description">{{ itm.description }}</span>
+                {% if object.description|length < 15 %}
+                <span class="products__item-description">{{ object.description }}</span>
                 {% else %}
-                <span class="product-list__item-description">{{ itm.description|slice:"0:15" }}</span>
+                <span class="product-list__item-description">{{ object.description|slice:"0:15" }}</span>
                 {% endif %}
-                {% if cost %}
+                {% if object.cost %}
                 <span class="product-list__item-cost">
-                    {{ cost }}
+                    {{ object.cost }}
                 </span>
                 {% else %}
                 <span class="product-list__item-cost products_item-cost_empty">
                     Значение отсутсвует
                 </span>
                 {% endif %}
-                <a href="{% url 'products:detail' pk=itm.id %}" class="product-list__item-link">
+                <a href="{% url 'products:detail' pk=object.id %}" class="product-list__item-link">
                     Перейти
                 </a>
             </div>
