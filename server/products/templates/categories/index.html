@@ -1,0 +1,31 @@
+{% extends 'main/master.html' %}
+
+{% block page_title %}
+Catalog page
+{% endblock %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/static/categories/css/index.css">
+    <div class="page__content">
+        <h1 class="page__title">
+            Каталог
+        </h1>
+        <div class="category-list">
+        {% for object in object_list %}
+            <div class="category-list__item">
+                <span class="category-list__item-name">
+                    {{ object.name }}
+                </span>
+                {% if object.description|length < 15 %}
+                <span class="category__item-description">{{ object.description }}</span>
+                {% else %}
+                <span class="category-list__item-description">{{ object.description|slice:"0:15" }}</span>
+                {% endif %}
+                <a href="{% url 'categories:detail' slug=object.name %}" class="product-list__item-link">
+                    Перейти
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

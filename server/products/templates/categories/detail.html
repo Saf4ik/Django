@@ -1,0 +1,15 @@
+{% extends 'main/master.html' %}
+
+{% block page_title %}
+Catalog page
+{% endblock %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/static/category/css/detail.css">
+    <div class="page__content" enctype="multipart/form-data">
+        <div class="category">
+            <h1 class="category__name">{{ object.name }}</h1>
+            <span class="category__description">{{ object.description }}</span>
+        </div>
+    </div>
+ {% endblock %}
