@@ -6,10 +6,18 @@ Catalog page
 
 {% block page_content %}
 <link rel="stylesheet" href="/static/category/css/detail.css">
+<link rel="stylesheet" href="/static/products/css/index.css">
     <div class="page__content" enctype="multipart/form-data">
         <div class="category">
             <h1 class="category__name">{{ object.name }}</h1>
             <span class="category__description">{{ object.description }}</span>
         </div>
     </div>
- {% endblock %}
+    {% include 'components/pagination.html' with page=page_obj page_range=page_obj.paginator.page_range %}
+    <div class="product-list">
+    {% for item in object.products.all %}
+        {% include 'components/product_item.html' with object=item %}
+    {% endfor %}
+    </div>
+    {% include 'components/pagination.html' with page=page_obj page_range=page_obj.paginator.page_range %}
+{% endblock %}

@@ -17,7 +17,7 @@ Catalog page
                     {{ object.name }}
                 </span>
                 {% if object.description|length < 15 %}
-                <span class="category__item-description">{{ object.description }}</span>
+                <span class="category-list__item-description">{{ object.description }}</span>
                 {% else %}
                 <span class="category-list__item-description">{{ object.description|slice:"0:15" }}</span>
                 {% endif %}

@@ -1,0 +1,27 @@
+<div class="product-list__item">
+    {% if object.image %}
+    <img src="{{ object.image.url }}" alt="object.image" class="product-list__item-image">
+    {% else %}
+    <img src="" alt="" class="product-list__item-image">
+     {% endif %}
+    <span class="product-list__item-name">
+        {{ object.name }}
+    </span>
+    {% if object.description|length < 15 %}
+    <span class="products__item-description">{{ object.description }}</span>
+    {% else %}
+    <span class="product-list__item-description">{{ object.description|slice:"0:15" }}</span>
+    {% endif %}
+    {% if object.cost %}
+    <span class="product-list__item-cost">
+        {{ object.cost }}
+    </span>
+    {% else %}
+    <span class="product-list__item-cost products_item-cost_empty">
+        Значение отсутсвует
+    </span>
+    {% endif %}
+    <a href="{% url 'products:detail' slug=object.name %}" class="product-list__item-link">
+        Перейти
+    </a>
+</div>
