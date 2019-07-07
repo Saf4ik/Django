@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             model_name='product',
             name='category',
             field=models.ForeignKey(
-                default=Category.objects.first().id,
+                default=1,
                 on_delete=django.db.models.deletion.CASCADE,
                 to='products.Category'
                 ),

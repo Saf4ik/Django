@@ -1,41 +1,21 @@
 {% extends 'main/master.html' %}
 
 {% block page_title %}
-Catalog page
+About page
 {% endblock %}
 
 {% block page_content %}
-<link rel="stylesheet" href="/static/products/css/index.css">
+    <link rel="stylesheet" href="/static/products/css/index.css">
     <div class="page__content">
         <h1 class="page__title">
             Каталог
         </h1>
+        {% include 'components/pagination.html' with page=page_obj page_range=page_obj.paginator.page_range %}
         <div class="product-list">
         {% for object in object_list %}
-            <div class="product-list__item">
-                <img src="{{ object.image.url }}" alt="object.image" class="product-list__item-image">
-                <span class="product-list__item-name">
-                    {{ object.name }}
-                </span>
-                {% if object.description|length < 15 %}
-                <span class="products__item-description">{{ object.description }}</span>
-                {% else %}
-                <span class="product-list__item-description">{{ object.description|slice:"0:15" }}</span>
-                {% endif %}
-                {% if object.cost %}
-                <span class="product-list__item-cost">
-                    {{ object.cost }}
-                </span>
-                {% else %}
-                <span class="product-list__item-cost products_item-cost_empty">
-                    Значение отсутсвует
-                </span>
-                {% endif %}
-                <a href="{% url 'products:detail' pk=object.id %}" class="product-list__item-link">
-                    Перейти
-                </a>
-            </div>
+            {% include 'components/product_item.html' with object=object %}
         {% endfor %}
         </div>
+        {% include 'components/pagination.html' with page=page_obj page_range=page_obj.paginator.page_range %}
     </div>
 {% endblock %}
